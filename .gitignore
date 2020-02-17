@@ -348,3 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Xamarin_Calculator.sln
+/Xamarin_Calculator/Xamarin_Calculator/Xamarin_Calculator.csproj
+/Xamarin_Calculator/Xamarin_Calculator.Android/Resources/Resource.designer.cs
