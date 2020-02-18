@@ -16,5 +16,13 @@ namespace Xamarin_Calculator.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            var buttonVal = ((Button)sender).Text;
+            //this.DisplayAlert("Button pressed: ", buttonVal, "Ok");
+            Console.WriteLine(buttonVal);
+
+        }
+    }
 }
