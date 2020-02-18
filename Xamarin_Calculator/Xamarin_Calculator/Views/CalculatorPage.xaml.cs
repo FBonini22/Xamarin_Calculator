@@ -96,6 +96,8 @@ namespace Xamarin_Calculator.Views
             else if(inpt == "CLEAR")
             {
                 calculatorExpression = "";
+
+
             }
 
             //Handle all digits
