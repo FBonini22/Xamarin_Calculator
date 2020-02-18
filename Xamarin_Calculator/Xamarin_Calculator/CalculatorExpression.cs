@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Xamarin_Calculator
 {
-    class CalculatorExpression
+    public class CalculatorExpression
     {
         //CONSTANTS
         private readonly char DELIMITER = ' ';
@@ -25,6 +25,16 @@ namespace Xamarin_Calculator
             Operand1 = double.Parse(parsed[0]);
             Operand2 = double.Parse(parsed[2]);
             Operator = parsed[1];
+        }
+
+        //Accessors
+        /// <summary>
+        /// Gets the delimiter used to parse <see cref="Calculator"/> input strings.
+        /// </summary>
+        /// <returns>Returns the delimiter as a string. This should be one character.</returns>
+        public char GetDelimiter()
+        {
+            return DELIMITER;
         }
     }
 }

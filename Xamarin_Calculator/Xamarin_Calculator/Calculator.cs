@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Xamarin_Calculator
 {
     /// <summary>
@@ -39,6 +40,8 @@ namespace Xamarin_Calculator
                 case "*":
                     break;
             }
+
+            return 0f;
         }
 
 
@@ -47,18 +50,10 @@ namespace Xamarin_Calculator
         {
             double sum = operand1 + operand2;
 
-
+            return sum;
         }
 
 
-        //Accessors
-        /// <summary>
-        /// Gets the delimiter used to parse <see cref="Calculator"/> input strings.
-        /// </summary>
-        /// <returns>Returns the delimiter as a string. This should be one character.</returns>
-        public string GetDelimiter()
-        {
-            return DELIMITER;
-        }
+
     }
 }

@@ -11,6 +11,9 @@ namespace Xamarin_Calculator.Views
         public MainPage()
         {
             InitializeComponent();
+
+            var s = new SfCalculator();
+            
         }
     }
 }

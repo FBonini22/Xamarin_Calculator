@@ -13,7 +13,6 @@ namespace Xamarin_Calculator
         {
             InitializeComponent();
 
-
             MainPage = new MainPage();
         }
 
