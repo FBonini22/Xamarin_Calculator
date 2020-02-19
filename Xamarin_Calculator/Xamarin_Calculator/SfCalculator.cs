@@ -54,11 +54,10 @@ namespace Xamarin_Calculator
             //Note that ÷ and × are special HTML characters.
             if (OPERATORS.Contains(inpt))
             {
-                //Reset the decimal tracker
-                doesCurrentWordHaveDot = false;
-
                 if (calculatorExpression != "" && !ExpressionEndsWithOperator(calculatorExpression) && !calculatorExpression.EndsWith("."))
                 {
+                    //Reset the decimal tracker
+                    doesCurrentWordHaveDot = false;
                     calculatorExpression += inpt;
                 }
             }
