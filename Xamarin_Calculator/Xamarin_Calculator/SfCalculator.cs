@@ -24,10 +24,6 @@ namespace Xamarin_Calculator
         /// </summary>
         bool doesCurrentWordHaveDot = false;
         /// <summary>
-        /// Keeps track of whether the expression ends with an operator. This will be used to prevent contiguous operators.
-        /// </summary>
-        bool doesExpHaveEndingOperator = false;
-        /// <summary>
         /// String expression which will be ultimately calculated. This is added to as the user presses buttons.
         /// </summary>
         string calculatorExpression = "";
@@ -95,6 +91,8 @@ namespace Xamarin_Calculator
             //Handle CLEAR
             else if (inpt == "CLEAR")
             {
+                doesCurrentWordHaveDot = false;
+
                 calculatorExpression = "";
             }
 

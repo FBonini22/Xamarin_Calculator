@@ -7,7 +7,7 @@ namespace Xamarin_Calculator.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        //public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+
 
         bool isBusy = false;
         public bool IsBusy
@@ -22,6 +22,8 @@ namespace Xamarin_Calculator.ViewModels
             get { return title; }
             set { SetProperty(ref title, value); }
         }
+
+
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
