@@ -5,20 +5,24 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Label x:Name="ExpressionDisplay" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End" FontSize="Large" TextColor="DarkSeaGreen"/>
-            <Grid x:Name="ButtonGrid">
+            <Label x:Name="ExpressionDisplay"
+                   HorizontalOptions="Fill"
+                   HorizontalTextAlignment="End"
+                   FontSize="Large"
+                   TextColor="DarkSeaGreen"/>
+            <Grid x:Name="ButtonGrid" HorizontalOptions="Fill">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="48"/>
-                    <RowDefinition Height="48"/>
-                    <RowDefinition Height="48"/>
-                    <RowDefinition Height="48"/>
-                    <RowDefinition Height="48"/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="64"/>
-                    <ColumnDefinition Width="64"/>
-                    <ColumnDefinition Width="64"/>
-                    <ColumnDefinition Width="64"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="Button7" Text="7" Grid.Row="0" Grid.Column="0" Clicked="Button_Clicked"/>
@@ -32,12 +36,12 @@
                 <Button x:Name="Button3" Text="3" Grid.Row="2" Grid.Column="2" Clicked="Button_Clicked"/>
                 <Button x:Name="Button0" Text="0" Grid.Row="3" Grid.Column="1" Clicked="Button_Clicked"/>
                 <Button x:Name="ButtonDot" Text="." Grid.Row="3" Grid.Column="2" Clicked="Button_Clicked"/>
-                <Button x:Name="ButtonDiv" Text="&#xf7;" Grid.Row="0" Grid.Column="3" TextColor="Crimson" Clicked="Button_Clicked"/>
-                <Button x:Name="ButtonMult" Text="&#xd7;" Grid.Row="1" Grid.Column="3" TextColor="Crimson" Clicked="Button_Clicked"/>
-                <Button x:Name="ButtonAdd" Text="+" Grid.Row="2" Grid.Column="3" TextColor="Crimson" Clicked="Button_Clicked"/>
-                <Button x:Name="ButtonSub" Text="-" Grid.Row="3" Grid.Column="3" TextColor="Crimson" Clicked="Button_Clicked"/>
+                <Button x:Name="ButtonDiv" Text="&#xf7;" Grid.Row="0" Grid.Column="3" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked"/>
+                <Button x:Name="ButtonMult" Text="&#xd7;" Grid.Row="1" Grid.Column="3" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked"/>
+                <Button x:Name="ButtonAdd" Text="+" Grid.Row="2" Grid.Column="3" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked"/>
+                <Button x:Name="ButtonSub" Text="-" Grid.Row="3" Grid.Column="3" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked"/>
                 <Button x:Name="ButtonEquals" Text="=" Grid.Row="4" Grid.Column="3" TextColor="DarkSeaGreen" Clicked="Button_Clicked"/>
-                <Button x:Name="ButtonClear" Text="CLEAR" Grid.Row="4" Grid.Column="2" TextColor="Crimson" Clicked="Button_Clicked"/>
+                <Button x:Name="ButtonClear" Text="CLEAR" Grid.Row="4" Grid.Column="2" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked"/>
 
             </Grid>
 

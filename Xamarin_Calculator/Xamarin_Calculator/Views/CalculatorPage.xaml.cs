@@ -12,9 +12,9 @@ namespace Xamarin_Calculator.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CalculatorPage : ContentPage
 	{
-
-
-        //Instance Variables
+        //CONSTANTS
+        
+        //INSTANCE VARIABLES
         SfCalculator CalcEngine;
 
 		public CalculatorPage ()
@@ -23,6 +23,7 @@ namespace Xamarin_Calculator.Views
 
             CalcEngine = new SfCalculator();
 		}
+
 
         private void Button_Clicked(object sender, EventArgs e)
         {
