@@ -12,16 +12,9 @@ namespace Xamarin_Calculator.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CalculatorPage : ContentPage
 	{
-        //CONSTANTS
-        private readonly string OPERATORS = "+-÷×";
+
 
         //Instance Variables
-        /// <summary>
-        /// Keeps track of whether the current number already has a decimal added. This will prevent adding 2 decimal points to a number.
-        /// This variable should be reset every time an operator is added.
-        /// </summary>
-        bool doesCurrentWordHaveDot = false;
-        string calculatorExpression = "";
         SfCalculator CalcEngine;
 
 		public CalculatorPage ()
@@ -37,81 +30,18 @@ namespace Xamarin_Calculator.Views
             //this.DisplayAlert("Button pressed: ", buttonVal, "Ok");
             Console.WriteLine(buttonVal);
 
-            HandleCalculatorInput(buttonVal);
+            UpdateCalculatorExpression(CalcEngine.HandleCalculatorInput(buttonVal));
         }
+
 
         /// <summary>
-        /// Calculator logic handling. This processes the button input. This also calls <see cref="UpdateCalculatorExpression"/> to update
-        /// the displayed expression.
+        /// Method to update the expression display on the screen. This was created as a separate method for the chance
+        /// that more code needs to be run when updating the expression.
         /// </summary>
-        /// <param name="inpt">The value of the button that was pressed.</param>
-        private void HandleCalculatorInput(string inpt)
+        /// <param name="newExpression"></param>
+        private void UpdateCalculatorExpression(string newExpression)
         {
-            //Handle operators
-            //Note that ÷ and × are special HTML characters.
-            if (OPERATORS.Contains(inpt))
-            {
-                //Reset the decimal tracker
-                doesCurrentWordHaveDot = false;
-
-                //Switch to handle special characters (× and ÷)
-                switch (inpt)
-                {
-                    case "÷":
-                        calculatorExpression += "/";
-                        break;
-                    case "×":
-                        calculatorExpression += "*";
-                        break;
-                    default:
-                        calculatorExpression += inpt;
-                        break;
-                }
-            }
-
-            //Handle decimal points
-            else if (inpt == "." && !doesCurrentWordHaveDot)
-            {
-                calculatorExpression += ".";
-                doesCurrentWordHaveDot = true;
-            }
-
-            //Handle equals
-            else if(inpt == "=")
-            {
-                //If the current expression ends with an operator, do not process it.
-                foreach(var op in OPERATORS.ToCharArray())
-                {
-                    if (calculatorExpression.EndsWith(op.ToString()))
-                    {
-                        return;
-                    }
-                }
-
-                //Calculate the input
-                calculatorExpression = CalcEngine.Calculate(calculatorExpression);
-            }
-
-            //Handle CLEAR
-            else if(inpt == "CLEAR")
-            {
-                calculatorExpression = "";
-
-
-            }
-
-            //Handle all digits
-            else
-            {
-                calculatorExpression += inpt;
-            }
-
-            UpdateCalculatorExpression();
-        }
-
-        private void UpdateCalculatorExpression()
-        {
-            ExpressionDisplay.Text = calculatorExpression;
+            ExpressionDisplay.Text = newExpression;
         }
     }
 }
