@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using Syncfusion.Calculate;
 
 namespace Xamarin_Calculator
@@ -26,6 +27,9 @@ namespace Xamarin_Calculator
         /// Keeps track of whether the expression ends with an operator. This will be used to prevent contiguous operators.
         /// </summary>
         bool doesExpHaveEndingOperator = false;
+        /// <summary>
+        /// String expression which will be ultimately calculated. This is added to as the user presses buttons.
+        /// </summary>
         string calculatorExpression = "";
 
 
@@ -52,45 +56,60 @@ namespace Xamarin_Calculator
             {
                 //Reset the decimal tracker
                 doesCurrentWordHaveDot = false;
-                calculatorExpression += inpt;
 
+                if (calculatorExpression != "" && !ExpressionEndsWithOperator(calculatorExpression) && !calculatorExpression.EndsWith("."))
+                {
+                    calculatorExpression += inpt;
+                }
             }
 
             //Handle decimal points
-            else if (inpt == "." && !doesCurrentWordHaveDot)
+            else if (inpt == ".")
             {
-                calculatorExpression += ".";
-                doesCurrentWordHaveDot = true;
+                //Skip this If there is already a decimal for this number, if the calculator expression is blank, or if the 
+                //expression ends with an operator.
+                if (!doesCurrentWordHaveDot && calculatorExpression != "" && !ExpressionEndsWithOperator(calculatorExpression))
+                {
+                    calculatorExpression += ".";
+                    doesCurrentWordHaveDot = true;
+                }
+                else
+                {
+                    return calculatorExpression;
+                }
+
             }
 
             //Handle equals
             else if (inpt == "=")
             {
                 //If the current expression ends with an operator, do not process it.
-                foreach (var op in OPERATORS.ToCharArray())
+                if (calculatorExpression != "" && !ExpressionEndsWithOperator(calculatorExpression))
                 {
-                    if (calculatorExpression.EndsWith(op.ToString()))
-                    {
-                        return calculatorExpression;
-                    }
-                }
+                    //TODO: Save the calculation in a log.
 
-                //Calculate the input
-                calculatorExpression = Calculate(ConvertExpression(calculatorExpression));
+                    //Calculate the input
+                    calculatorExpression = Calculate(ConvertExpression(calculatorExpression));
+                }
             }
 
             //Handle CLEAR
             else if (inpt == "CLEAR")
             {
                 calculatorExpression = "";
-
-
             }
 
             //Handle all digits
-            else
+            else if (Regex.IsMatch(inpt,"[0-9]+"))
             {
                 calculatorExpression += inpt;
+            }
+
+            //Handle miscellaneous cases for debugging. The program should never flow here, but in the event
+            //I missed a case, I'll be able to debug it.
+            else
+            {
+                Console.WriteLine("Input case unaccounted for: " + inpt + "  when current expression is: " + calculatorExpression);
             }
 
             return calculatorExpression;
@@ -128,6 +147,27 @@ namespace Xamarin_Calculator
             expression = expression.Replace("×", "*");
 
             return expression;
+        }
+
+        /// <summary>
+        /// Method that checks whether the expression ends with an operator.
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        private bool ExpressionEndsWithOperator(string expression)
+        {
+            //I was going to use Regex, but since all of the operators are also Regex quantifiers, it would require
+            //more code than a simple iteration.
+
+            foreach (var op in OPERATORS.ToCharArray())
+            {
+                if (expression.EndsWith(op.ToString()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
