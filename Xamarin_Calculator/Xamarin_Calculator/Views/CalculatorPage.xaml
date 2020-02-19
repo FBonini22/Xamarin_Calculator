@@ -41,7 +41,7 @@
                 <Button x:Name="ButtonAdd" Text="+" Grid.Row="2" Grid.Column="3" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked"/>
                 <Button x:Name="ButtonSub" Text="-" Grid.Row="3" Grid.Column="3" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked"/>
                 <Button x:Name="ButtonEquals" Text="=" Grid.Row="4" Grid.Column="3" TextColor="DarkSeaGreen" Clicked="Button_Clicked"/>
-                <Button x:Name="ButtonClear" Text="CLEAR" Grid.Row="4" Grid.Column="2" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked"/>
+                <Button x:Name="ButtonClear" Text="CLEAR" Grid.Row="4" Grid.Column="2" TextColor="{StaticResource OperatorButtonTextColor}" Clicked="Button_Clicked" FontSize="Micro"/>
 
             </Grid>
 

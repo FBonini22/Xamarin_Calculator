@@ -28,7 +28,7 @@ namespace Xamarin_Calculator.ViewModels
         /// This loads the items using the <see cref="CalcHistoryHelper"/>. It does not need to be a task or async becuase this
         /// is a simple operation (There is no file I/O).
         /// </summary>
-        private async void ExecuteLoadItemsCommand()
+        private void ExecuteLoadItemsCommand()
         {
             //
             if (IsBusy)
