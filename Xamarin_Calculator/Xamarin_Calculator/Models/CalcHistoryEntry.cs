@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Xamarin_Calculator.Models
@@ -24,5 +25,13 @@ namespace Xamarin_Calculator.Models
         /// </summary>
         public string Expression { get { return _expression; }}
         public string TimeStamp { get { return _timestamp.ToLongDateString(); }}
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            this.PropertyChanged?.Invoke(this,
+              new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

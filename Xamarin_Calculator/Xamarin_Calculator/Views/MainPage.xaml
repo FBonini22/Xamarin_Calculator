@@ -17,7 +17,7 @@
 
         <NavigationPage Title="History">
             <x:Arguments>
-                <views:AboutPage />
+                <views:HistoryPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="About">

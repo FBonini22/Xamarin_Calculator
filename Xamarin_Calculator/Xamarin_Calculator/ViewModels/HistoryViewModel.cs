@@ -28,7 +28,7 @@ namespace Xamarin_Calculator.ViewModels
         /// This loads the items using the <see cref="CalcHistoryHelper"/>. It does not need to be a task or async becuase this
         /// is a simple operation (There is no file I/O).
         /// </summary>
-        private void ExecuteLoadItemsCommand()
+        private async void ExecuteLoadItemsCommand()
         {
             //
             if (IsBusy)
@@ -39,6 +39,8 @@ namespace Xamarin_Calculator.ViewModels
             //Set this to true so the app knows we are attempting to load a list. If the user tries to refresh the ListView while
             //it's already being refreshed in a previous request, there could be an error. This prevents that.
             IsBusy = true;
+
+            Items.Clear();
 
             var historyLogs = CalcHistoryHelper.ReadHistoryLog();
 

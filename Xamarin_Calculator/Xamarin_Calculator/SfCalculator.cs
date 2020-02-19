@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Syncfusion.Calculate;
+using Xamarin_Calculator.Services;
 
 namespace Xamarin_Calculator
 {
@@ -84,7 +85,12 @@ namespace Xamarin_Calculator
                     //TODO: Save the calculation in a log.
 
                     //Calculate the input
-                    calculatorExpression = Calculate(ConvertExpression(calculatorExpression));
+                    string calculated = Calculate(ConvertExpression(calculatorExpression));
+
+                    //Save it in the history
+                    CalcHistoryHelper.LogEntry(calculatorExpression + " = " + calculated);
+
+                    calculatorExpression = calculated;
                 }
             }
 
